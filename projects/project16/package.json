@@ -1,7 +1,0 @@
-{
-  "name": "project16",
-  "scripts": {
-    "build": "tsc && tsc-alias -r replacer.js",
-    "start": "npm run build && node ./dist/server/index.js"
-  }
-}

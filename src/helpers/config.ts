@@ -7,7 +7,7 @@
 /** */
 import { existsSync, lstatSync } from 'fs';
 import { Dir, Json } from 'mylas';
-import { basename, dirname, isAbsolute, join, resolve } from 'path';
+import { basename, dirname, isAbsolute, join, normalize, resolve } from 'path';
 import {
   IConfig,
   IOutput,
@@ -38,7 +38,7 @@ export async function prepareConfig(
 
   output.assert(existsSync(configFile), `Invalid file path => ${configFile}`);
 
-  const {
+  let {
     baseUrl = '',
     outDir,
     declarationDir,
@@ -48,6 +48,10 @@ export async function prepareConfig(
     verbose,
     fileExtensions
   } = loadConfig(configFile, output);
+
+  if (declarationDir.indexOf('${configDir}') !== -1) {
+      declarationDir = normalize(dirname(configFile) + '/' + declarationDir.split('${configDir}').pop());
+  }
 
   if (options?.fileExtensions?.inputGlob) {
     fileExtensions.inputGlob = options.fileExtensions.inputGlob;
