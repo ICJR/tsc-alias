@@ -10,7 +10,7 @@
     "tsc-alias": "dist/bin/index.js"
   },
   "scripts": {
-    "build": "tsc && tsc-alias",
+    "build": "tsc",
     "build:dev": "tsc -w",
     "clean": "rimraf dist && tsc && pnpm link -g",
     "prepare": "npm run build",
