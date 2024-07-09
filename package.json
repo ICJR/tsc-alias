@@ -10,8 +10,11 @@
     "tsc-alias": "dist/bin/index.js"
   },
   "scripts": {
+    "build": "tsc && tsc-alias",
     "build:dev": "tsc -w",
     "clean": "rimraf dist && tsc && pnpm link -g",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "release:patch": "npm version patch",
     "postversion": "git push && git push --tags && npm publish"
   },
