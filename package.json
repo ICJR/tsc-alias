@@ -1,5 +1,5 @@
 {
-  "name": "tsc-alias",
+  "name": "@esportsplus/tsc-alias",
   "version": "1.8.10",
   "description": "Replace alias paths with relative paths after typescript compilation.",
   "main": "dist/index.js",
